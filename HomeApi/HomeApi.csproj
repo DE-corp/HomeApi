@@ -11,6 +11,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\HomeApi.Contracts\HomeApi.Contracts.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Update="HomeOptions.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

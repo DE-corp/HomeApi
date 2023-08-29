@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using System.Reflection;
 
 namespace HomeApi
 {
@@ -22,6 +23,9 @@ namespace HomeApi
         {
             // Добавляем новый сервис
             services.Configure<HomeOptions>(Configuration);
+            // Подключаем автомаппинг
+            var assembly = Assembly.GetAssembly(typeof(MappingProfile));
+            services.AddAutoMapper(assembly);
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

@@ -1,4 +1,6 @@
+using FluentValidation.AspNetCore;
 using HomeApi.Configuration;
+using HomeApi.Contracts.Models.Validation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -21,6 +23,8 @@ namespace HomeApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Подключаем валидацию
+            services.AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<AddDeviceRequestValidator>());
             // Добавляем новый сервис
             services.Configure<HomeOptions>(Configuration);
             // Подключаем автомаппинг
